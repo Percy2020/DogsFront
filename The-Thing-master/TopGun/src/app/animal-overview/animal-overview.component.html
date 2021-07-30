@@ -1,0 +1,26 @@
+<div class="container margin-top">
+
+    <button type="submit" class="btn btn-primary" (click)="EditAnimal('0')">
+        Lägg till
+    </button>
+    <h3>Lista av Hundar</h3>
+    <div class="list-group">
+        <a *ngFor="let animal of animales" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{animal.name}}</h5>
+                <small>
+                    <a (click)="DeleteAnimal(animal.id)" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Delete</a>
+                    <a (click)="EditAnimal(animal.id)"class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Edit</a>
+                </small>
+            </div>
+            <p class="mb-1">{{animal.description}}</p>
+           
+            <figure class="figure">
+                <img src="{{ animal.photo }}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption text-right">{{animal.type}},{{animal.breed}},{{animal.size}},{{animal.gender}}</figcaption>
+                <app-image-lightbox [animalId]="animal.id"></app-image-lightbox>
+                <!-- <app-image-modal></app-image-modal> -->
+            </figure>
+        </a>
+    </div>
+</div>
